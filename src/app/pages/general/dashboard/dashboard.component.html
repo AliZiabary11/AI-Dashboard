@@ -1,0 +1,70 @@
+<div class="h-100 w-100">
+  <div class=" p-0" style="display:flex;flex-direction:row;justify-content:space-around">
+    <div class="p-0" style="max-height: 500px; height: 500px; min-width: 500px !important; flex: 2">
+      <div class="card h-100">
+        <div class="card-body">
+          <hp-chart-hc *ngIf="chart1.options" [highchart]="chart1.highchart" [options]="chart1.options"
+            [event]="chart1.event" [eventSeriesDataType]="chart1.eventSeriesDataType"
+            [eventType]="chart1.eventType"></hp-chart-hc>
+        </div>
+      </div>
+
+    </div>
+    <div class="p-0" style="max-height: 500px; height: 500px; min-width: 500px !important; flex: 1">
+      <div class="card h-100 d-flex" style="flex-direction:column;">
+        <div class="card-body">
+          <hp-chart-hc *ngIf="chart2.options" [highchart]="chart2.highchart" [options]="chart2.options"
+            [event]="chart2.event" [eventSeriesDataType]="chart2.eventSeriesDataType"
+            [eventType]="chart2.eventType"></hp-chart-hc>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <div class=" p-0" style="display:flex;flex-direction:row;justify-content:space-around">
+    <div class="p-0" style="max-height: 500px; height: 500px; flex: 1">
+      <div class="card h-100">
+        <div class="card-body">
+          <hp-chart-hc *ngIf="chart3.options" [highchart]="chart3.highchart" [options]="chart3.options"
+            [event]="chart3.event" [eventSeriesDataType]="chart3.eventSeriesDataType"
+            [eventType]="chart3.eventType"></hp-chart-hc>
+        </div>
+      </div>
+
+    </div>
+    <div class="p-0" style="max-height:500px;height:500px;flex: 2">
+      <div class="card h-100 d-flex" style="flex-direction:column;">
+        <div class="card-body">
+          <hp-chart-hc *ngIf="chart4.options" [highchart]="chart4.highchart" [options]="chart4.options"
+            [event]="chart4.event" [eventSeriesDataType]="chart4.eventSeriesDataType"
+            [eventType]="chart4.eventType"></hp-chart-hc>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-0 pt-2" style="display:flex;flex-direction:row;justify-content:space-around">
+    <div class="p-0" style="max-height: 500px; height: 500px; flex: 1">
+      <div class="card h-100">
+        <div class="card-body">
+          <hp-chart-hc *ngIf="chart5.options" [highchart]="chart5.highchart" [options]="chart5.options"
+            [event]="chart5.event" [eventSeriesDataType]="chart5.eventSeriesDataType"
+            [eventType]="chart5.eventType" [customFunction]="chart5.customFunction"></hp-chart-hc>
+        </div>
+      </div>
+
+    </div>
+    <div class="p-0" style="max-height:500px;height:500px;flex: 1">
+      <div class="card h-100 d-flex" style="flex-direction:column;">
+        <div class="card-body">
+          <hp-chart-hc *ngIf="chart6.options" [highchart]="chart6.highchart" [options]="chart6.options"
+            [event]="chart6.event" [eventSeriesDataType]="chart6.eventSeriesDataType"
+            [eventType]="chart6.eventType"></hp-chart-hc>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

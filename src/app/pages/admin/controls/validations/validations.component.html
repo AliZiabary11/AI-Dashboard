@@ -1,0 +1,60 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- Textbox -->
+    <div class="p-4 d-flex" style="flex-direction: column;align-items: start;justify-content: space-around;" >
+        <label for="textbox">Textbox:</label>
+        <hp-textbox type="text" id="textbox" name="textbox" formControlName="textbox"></hp-textbox>
+        <div class="pt-2" *ngIf="form.get('textbox')?.errors?.['required'] && form.get('textbox')?.touched" style="color: red;font-weight: bold;">This field is required.
+        </div>
+    </div>
+
+    <!-- Textarea -->
+    <div class="p-4 d-flex" style="flex-direction: column;align-items: start;justify-content: space-around;">
+        <label for="textarea">Textarea:</label>
+        <hp-textarea id="textarea" formControlName="textarea"></hp-textarea>
+        <div class="pt-2" *ngIf="form.get('textarea')?.errors?.['required'] && form.get('textarea')?.touched" style="color: red;font-weight: bold;">This field is required.
+        </div>
+    </div>
+
+    <!-- Checkbox -->
+    <div class="p-4 d-flex" style="flex-direction: row;align-items: baseline;justify-content: left;">
+        <hp-checkbox type="checkbox" id="checkbox" formControlName="checkbox" [label]="'Checkbox'" ></hp-checkbox>
+    </div>
+
+    <!-- Radio Buttons -->
+    <div class="p-4 d-flex" style="flex-direction: column;align-items: start;justify-content: space-around;">
+        <label>Radio Buttons:</label>
+        <input type="radio" id="option1" formControlName="radioButton" value="option1">
+        <label for="option1">Option 1</label>
+        <input type="radio" id="option2" formControlName="radioButton" value="option2">
+        <label for="option2">Option 2</label>
+        <div class="pt-2" *ngIf="form.get('radioButton')?.errors?.['required'] && form.get('radioButton')?.touched" style="color: red;font-weight: bold;">Please select an
+            option.</div>
+    </div>
+
+    <!-- Dropdown -->
+    <div class="p-4 d-flex" style="flex-direction: column;align-items: start;justify-content: space-around;">
+        <label for="dropdown">Dropdown:</label>
+        <hp-dropdown id="dropdown" formControlName="dropdown" [options]="dropdownData" [optionLabel]="'key'">
+
+        </hp-dropdown>
+        <div class="pt-2" *ngIf="form.get('dropdown')?.errors?.['required'] && form.get('dropdown')?.touched" style="color: red;font-weight: bold;">Please select an
+            option.</div>
+    </div>
+
+    <!-- Dynamic Addresses -->
+    <div class="p-4" formArrayName="addresses">
+        <label>Addresses:</label>
+        <div *ngFor="let address of addresses.controls; let i=index" style="display: flex; flex-direction: column; justify-content: start;align-items: start;">
+           <div class="d-flex" style="flex-direction: row;align-items: end;justify-content: start;">
+            <hp-textbox type="text" [formControlName]="i"></hp-textbox>
+            <hp-button className="ml-2" type="button" (click)="removeAddress(i)" label="Remove"></hp-button>
+           </div> 
+         <div class="pt-2" *ngIf="address.errors?.['required'] && address.touched" style="color: red;font-weight: bold;">Address is required.</div>
+        </div>
+        <hp-button type="button" (click)="addAddress()" label="Add Address"></hp-button>
+    </div>
+
+
+    <hp-button class="m-4" btnType="success" type="submit" label="Submit"></hp-button>
+</form>

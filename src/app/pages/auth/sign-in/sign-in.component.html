@@ -1,0 +1,101 @@
+<!-- Header of box -->
+<h3 class="text-center main-font-size-3" style="font-weight:bold">LOGIN</h3>
+<p  class="text-muted m-4 text-center main-font-size-2">
+  Welcome to our panel
+</p>
+
+<!-- form -->
+<form [formGroup]="signInForm">
+  <!-- user name -->
+  <div class="row" dir="ltr">
+    <!-- icon -->
+    <div class="col-2 text-center">
+      <i
+        class="pi pi-user pt-2"
+        style="color: 'var(--teal-400)'; font-size: 2.5rem"
+      ></i>
+    </div>
+    <!-- input -->
+    <div class="col-10">
+      <hp-textbox
+        ngDefaultControl
+        [className]="'w-100'"
+        [id]="'username'"
+        placeholder="username"
+        formControlName="username"
+        (onEnterKeyDown)="onFormEnter()"
+      ></hp-textbox>
+      <div
+        *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="text-danger"
+      >
+        <p class="main-font-size-1" *ngIf="username?.errors?.['required']">
+          username or password can't be empty.
+        </p>
+        <p class="main-font-size-1" *ngIf="username?.errors?.['minlength']">
+          username can't be less than 3 digit number
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- password  -->
+  <div class="row" dir="ltr">
+    <div class="col-2 text-center">
+      <i
+        class="pi pi-key pt-2"
+        style="color: 'var(--teal-400)'; font-size: 2.5rem"
+      ></i>
+    </div>
+    <div class="col-10">
+      <hp-textbox
+        ngDefaultControl
+        [type]="passVisible ? 'text' : 'password'"
+        [className]="'w-100'"
+        [id]="'password'"
+        placeholder="password"
+        formControlName="password"
+        (onEnterKeyDown)="onFormEnter()"
+      ></hp-textbox>
+      <span
+        *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+        class="text-danger"
+      >
+        <span class="main-font-size-1" *ngIf="password?.errors?.['required']">
+          password can't be empty.
+        </span>
+        <span class="main-font-size-1" *ngIf="password?.errors?.['minlength']">
+          password can't be less than 3 character 
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Show Pass -->
+  <div class="m-3" dir="ltr">
+    <hp-checkbox
+      label="&nbsp;&nbsp; show password"
+      name="passVisible"
+      [(ngModel)]="passVisible"
+      ngDefaultControl
+      [binary]="true"
+      [ngModelOptions]="{ standalone: true }"
+    ></hp-checkbox>
+  </div>
+
+  <!-- Links  -->
+  <div class="links" dir="ltr">
+    <a class="main-font-size-1" [routerLink]="['/auth/forgot-password']" class="link-info"
+      >forgot password</a
+    >
+  </div>
+
+  <!-- Submit Button -->
+  <div class="text-center">
+    <hp-button
+      [label]="'login'"
+      [icon]="btnSignInIcon"
+      className="text-center"
+      [isLoading]="isLoading"
+      (onClick)="onSignInClick()"
+    ></hp-button>
+  </div>
+</form>

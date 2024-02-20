@@ -1,0 +1,178 @@
+<p-accordion>
+  <p-accordionTab
+    expandIcon="pi pi-check"
+    collapseIcon="pi pi-fw pi-save"
+    [header]="header"
+    [(selected)]="activeState"
+  >
+    <form class="w-100" [formGroup]="saveMenuForm">
+      <div class="row my-3">
+        <div class="col-lg-6 mb-2">
+          <div class="row">
+            <label for="title" class="mb-2">
+              عنوان: <strong class="text-danger">*</strong>
+            </label>
+            <hp-textbox
+              ngDefaultControl
+              [className]="'w-100'"
+              [placeholder]="'عنوان'"
+              formControlName="title"
+            ></hp-textbox>
+            <!-- Validate errors -->
+            <div
+              *ngIf="
+                titleInput?.invalid &&
+                (titleInput?.dirty || titleInput?.touched)
+              "
+              class="text-danger my-1"
+            >
+              <p *ngIf="titleInput?.errors?.['required']">
+                عنوان نمی تواند خالی باشد.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
+          <div class="row">
+            <label for="oldPass" class="mb-2">
+              نام ماژول: <strong class="text-danger">*</strong>
+            </label>
+            <hp-textbox
+              ngDefaultControl
+              [className]="'w-100'"
+              [placeholder]="'نام ماژول'"
+              [id]="'moduleName'"
+              formControlName="moduleName"
+            ></hp-textbox>
+            <!-- Validate errors -->
+            <div
+              *ngIf="
+                menuModuleInput?.invalid &&
+                (menuModuleInput?.dirty || menuModuleInput?.touched)
+              "
+              class="text-danger my-1"
+            >
+              <p *ngIf="menuModuleInput?.errors?.['required']">
+                نام ماژول نمی تواند خالی باشد.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row my-3">
+        <div class="col-lg-6 mb-2">
+          <div class="row">
+            <label for="icon" class="mb-2">
+              آیکون: <strong class="text-danger">*</strong>
+            </label>
+            <hp-textbox
+              ngDefaultControl
+              [className]="'w-100'"
+              [placeholder]="'آیکون'"
+              [id]="'icon'"
+              formControlName="icon"
+            ></hp-textbox>
+            <!-- Validate errors -->
+            <div
+              *ngIf="
+                iconInput?.invalid && (iconInput?.dirty || iconInput?.touched)
+              "
+              class="text-danger my-1"
+            >
+              <p *ngIf="iconInput?.errors?.['required']">
+                آیکون نمی تواند خالی باشد.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
+          <div class="row">
+            <label for="orderNum" class="mb-2">
+              ترتیب نمایش: <strong class="text-danger">*</strong>
+            </label>
+            <hp-inputnumber
+              [min]="1"
+              ngDefaultControl
+              [className]="'w-100'"
+              [showButtons]="true"
+              id="orderNum"
+              formControlName="orderNum"
+            ></hp-inputnumber>
+            <!-- Validate errors -->
+            <div
+              *ngIf="
+                orderNumInput?.invalid &&
+                (orderNumInput?.dirty || orderNumInput?.touched)
+              "
+              class="text-danger my-1"
+            >
+              <p *ngIf="orderNumInput?.errors?.['required']">
+                ترتیب نمایش نمی تواند خالی باشد.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row my-3">
+        <div class="col-lg-6 mb-2">
+          <div class="row">
+            <label for="isHide" class="mb-2"> منوی والد : </label>
+            <hp-dx-drop-down-list
+              #selectBox
+              ngDefaultControl
+              formControlName="parentId"
+              [displayExpr]="'title'"
+              [valueExpr]="'id'"
+            ></hp-dx-drop-down-list>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
+          <div class="row">
+            <label for="data" class="mb-2"> دیتا: </label>
+            <hp-textarea
+              ngDefaultControl
+              formControlName="data"
+              [placeholder]="'...'"
+              [className]="'w-100'"
+            >
+            </hp-textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-lg-6 mb-2">
+          <div class="row">
+            <label for="isHide" class="mb-2">
+              آیا نمایش داده <strong class="text-warning">نشود</strong>؟
+            </label>
+            <div class="pt-2">
+              <hp-inputswitch
+                ngDefaultControl
+                formControlName="isHide"
+              ></hp-inputswitch>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-left">
+        <hp-button
+          type="secondary"
+          [label]="isEditMode ? 'انصراف ار ویرایش' : 'پاکسازی فرم'"
+          [className]="'ml-4'"
+          (onClick)="onClearFormClick()"
+        ></hp-button>
+        <hp-button
+          type="success"
+          [label]="isEditMode ? 'ویرایش منوی انتخابی' : 'درج منوی جدید'"
+          [isLoading]="isLoading"
+          (onClick)="onSaveClick()"
+        ></hp-button>
+      </div>
+    </form>
+  </p-accordionTab>
+</p-accordion>

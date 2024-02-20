@@ -1,0 +1,74 @@
+<div class="h-100 w-100 d-flex" style="flex-direction: column">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <ng-container
+        *ngFor="let tab of tabs; let i = index; trackBy: trackByIdentity"
+      >
+        <button
+          class="nav-link"
+          style="font-weight: bold; color: black"
+          (click)="onTabClick(i)"
+          [class.active]="tab.active"
+          (auxclick)="auxclick($event, i)"
+          [attr.id]="'nav-' + tab.key + '-tab'"
+          data-bs-toggle="tab"
+          [attr.data-bs-target]="'nav-' + tab.key"
+          type="button"
+          role="tab"
+          [attr.aria-controls]="'nav-' + tab.key"
+          [attr.aria-selected]="tab.active == true ? 'true' : 'false'"
+        >
+          <i
+            [ngClass]="i == 0 ? 'fa fa-dashboard' : tab.icon"
+            style="font-weight: bold; padding-right: 5px; padding-right: 5px; font-size:1rem"
+          ></i
+          ><span style="font-size: 1rem">{{ tab.title }}</span>
+          <span
+            *ngIf="i > 0"
+            class="tab-close-icon"
+            style="padding: 5px 5px 5px 1px; font-size: 1rem "
+            (click)="onCloseIcon(i)"
+             
+          >
+            <i
+              class="fa fa-close"
+              style="font-weight: bold; padding-left: 5px; font-size: 1rem"
+            ></i>
+          </span>
+        </button>
+      </ng-container>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent" style="overflow: auto; flex: 1">
+    <ng-container
+      *ngFor="let tab of tabs; let i = index; trackBy: trackByIdentity"
+    >
+      <div
+        *ngIf="i == 0"
+        class="tab-pane fade h-100 w-100"
+        [ngClass]="{ 'show active': tab.active == true }"
+        [id]="'nav-' + tab.key"
+        role="tabpanel"
+        [attr.aria-labelledby]="'nav-' + tab.key + '-tab'"
+      >
+        <div class="w-100 h-100">
+          <hp-dashboard></hp-dashboard>
+        </div>
+      </div>
+      <div
+        *ngIf="i > 0"
+        class="tab-pane fade h-100 w-100"
+        [ngClass]="{ 'show active': tab.active == true }"
+        [id]="'nav-' + tab.key"
+        role="tabpanel"
+        [attr.aria-labelledby]="'nav-' + tab.key + '-tab'"
+      >
+        <comp-loader
+          *ngIf="tab.key != 'dashboard'"
+          [active]="tab.active"
+          [tab]="tab"
+        ></comp-loader>
+      </div>
+    </ng-container>
+  </div>
+</div>

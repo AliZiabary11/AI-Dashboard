@@ -1,0 +1,44 @@
+.p-overlaypanel::before,
+.p-overlaypanel::after {
+  display: none;
+}
+
+
+/* 
+  ##Device = Desktops
+*/
+@media (min-width: 1281px) {
+  .p-overlaypanel {
+    top: 6% !important;
+    left: 2% !important;
+  }
+}
+
+/*   ##Device = Laptops, Desktops*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .p-overlaypanel {
+    top: 8% !important;
+    left: 2% !important;
+  }
+}
+
+/*  ##Device = Tablets, Ipads (portrait) */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .p-overlaypanel {
+    top: 25% !important;
+    max-width: 90%;
+    // margin-left: 50%;
+  }
+}
+
+/*    ##Device = Low Resolution Tablets, Mobiles (Landscape)*/
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .p-overlaypanel {
+    top: 30% !important;
+    max-width: 90%;
+    // margin-left: 12%;
+  }
+}

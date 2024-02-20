@@ -1,0 +1,9 @@
+<div class="h-100 w-100 ui-rtl"  dir="ltr">
+  <hp-loading [loadingState]="loading">
+    <router-outlet #o="outlet"></router-outlet>
+  </hp-loading>
+</div>
+
+<!-- PrimeNg Confirmation -->
+<p-confirmDialog  [rtl]="true" [transitionOptions]="'100ms'" [breakpoints]="{'640px': '80vw'}" [style]="{width: '35vw'}">
+</p-confirmDialog>

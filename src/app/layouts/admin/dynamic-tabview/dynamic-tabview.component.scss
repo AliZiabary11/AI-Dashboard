@@ -1,0 +1,19 @@
+
+.p-tabview-close {
+  padding-right: 10px !important;
+}
+
+
+/* hover */
+.p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
+  background: #4bbebe;
+  border-color: brown;
+  color: navy;
+}
+
+
+.tab-close-icon:hover{
+    svg{
+        color:red;
+    }
+}

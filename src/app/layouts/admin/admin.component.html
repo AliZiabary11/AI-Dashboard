@@ -1,0 +1,23 @@
+<div
+  class="layout-wrapper"
+  [ngClass]="containerClass"
+  style="background: #ebebeb;max-height:100%;height:100%;"
+>
+  <admin-topbar></admin-topbar>
+  
+  <div class="layout-main-container h-100">
+    <div class="layout-main w-100 h-100 card p-0">
+
+      <!--<router-outlet></router-outlet>-->
+    <dynamic-tabview style="height:100%"></dynamic-tabview>
+
+    </div>
+  </div>
+
+  <div class="layout-sidebar" style="padding:0px">
+    <admin-sidebar></admin-sidebar>
+  </div>
+
+  <app-config></app-config>
+  <div class="layout-mask" (click)="layoutService.onMenuToggle()"></div>
+</div>

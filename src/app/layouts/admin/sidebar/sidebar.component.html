@@ -1,0 +1,17 @@
+
+<hp-loading [loadingState]="loading">
+  <div style="padding-left: 15px; padding-right: 15px; padding-top: 15px ">
+    <ul class="layout-menu">
+      <ng-container *ngFor="let item of model; let i = index;">
+        <li style="font-size:1rem" app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
+        <li *ngIf="item.separator" class="menu-separator"></li>
+      </ng-container>
+
+    </ul>
+
+    <div class="posit"></div>
+  </div>
+
+
+</hp-loading>
+

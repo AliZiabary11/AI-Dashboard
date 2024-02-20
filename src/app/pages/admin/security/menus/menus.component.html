@@ -1,0 +1,35 @@
+<div>
+  <menus-save #savePanel></menus-save>
+  <hp-toolbar
+    [(ngModel)]="search"
+    ngDefaultControl
+    (onInsertClick)="onMenuInsertClick()"
+    (onDeleteClick)="onMenuDeleteClick()"
+    (onEditClick)="onMenuEditClick()"
+    (onRefreshClick)="onMenuRefreshClick()"
+    (onSearchClick)="onMenuSearchClick()"
+    (onSearchBoxEnterKeyDown)="onMenuSearchClick()"
+  ></hp-toolbar>
+  <p-accordion>
+    <p-accordionTab
+      [(selected)]="isGridPanelVisible"
+      [header]="'منوی های ثبت شده'"
+      (selectedChange)="onGridPanelChanged()"
+    >
+      <hp-tree-grid
+        #grid
+        *ngIf="isGridVisible"
+        [menuItems]="contextMenuItems"
+        [selectedItems]="selectedMenu"
+        (onSelectionChange)="onMenuEditClick()"
+        [listUrl]="menuService.treeListWithPaging"
+        [listModel]="{ searchString: search }"
+        [columns]="columns"
+        [dataKey]="'id'"
+        [parentIdField]="'parentId'"
+        [hasChildField]="'hasChildren'"
+        ngDefaultControl
+      ></hp-tree-grid>
+    </p-accordionTab>
+  </p-accordion>
+</div>

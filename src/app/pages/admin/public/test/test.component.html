@@ -1,0 +1,169 @@
+<hp-toolbar
+  [(ngModel)]="toolBarSearch"
+  ngDefaultControl
+  (onInsertClick)="onToolbarClick('Insert Clicked')"
+  (onDeletetClick)="onToolbarClick('Delete Clicked')"
+  (onEditClick)="onToolbarClick('Edit Clicked')"
+  (onRefreshClick)="onToolbarClick('Refresh Clicked')"
+></hp-toolbar>
+<p><strong>Search Value :  </strong>{{ this.toolBarSearch }}</p>
+
+<div class="container">
+  <section>
+    <h3>ContextMenu Example</h3>
+    <div #context style="width: 250px; height: 250px; background-color: tomato">
+      Double Click On Me!
+    </div>
+
+    <hp-contextmenu [target]="context" [items]="menuItems"></hp-contextmenu>
+  </section>
+
+  <p-divider type="dashed"></p-divider>
+
+  <section>
+    <h3>Listbox Example</h3>
+    <hp-listbox
+      [options]="listBoxOptions"
+      [optionLabel]="'name'"
+      [multiple]="false"
+      [metaKeySelection]="true"
+      [filter]="true"
+      [(ngModel)]="listBoxSelectValue"
+      ngDefaultControl
+    ></hp-listbox>
+    <p>{{ listBoxSelectValue.name }}</p>
+  </section>
+
+  <p-divider type="dashed"></p-divider>
+
+  <section>
+    <h3>Textarea Example</h3>
+    <hp-textarea
+      [(ngModel)]="textAreaValue"
+      ngDefaultControl
+      [autoResize]="true"
+    ></hp-textarea>
+    <p><strong>Value :</strong>{{ this.textAreaValue }}</p>
+  </section>
+
+  <p-divider type="dashed"></p-divider>
+
+  <section>
+    <h3>Drop Down Example</h3>
+    <hp-dropdown
+      [options]="dropDownOptions"
+      [optionLabel]="'name'"
+      [(ngModel)]="dropDownSelectValue"
+      ngDefaultControl
+      name="myDropDown"
+    >
+    </hp-dropdown>
+
+    <p><strong>Value :</strong>{{ this.dropDownSelectValue.name }}</p>
+  </section>
+
+  <p-divider type="dashed"></p-divider>
+
+  <section>
+    <h3>Multi Select Example</h3>
+    <hp-multiselect
+      [options]="multiSelectOptions"
+      [optionLabel]="'name'"
+      [defaultLabel]="'Select a city'"
+      [(ngModel)]="multiSelectValue"
+      name="myMultiSelect"
+      ngDefaultControl
+      [isChip]="true"
+    >
+    </hp-multiselect>
+    <p *ngFor="let item of multiSelectValue">{{ item.name }}</p>
+  </section>
+
+  <p-divider type="dashed"></p-divider>
+
+  <section>
+    <h3>Input Switch Example</h3>
+    <hp-inputswitch
+      [(ngModel)]="switchValue"
+      name="mySwitch"
+      ngDefaultControl
+    ></hp-inputswitch>
+    <p><strong>Value :</strong>{{ switchValue }}</p>
+  </section>
+
+  <p-divider type="dashed"></p-divider>
+
+  <section>
+    <h3>CheckBox Example</h3>
+
+    <hp-checkbox
+      [(ngModel)]="checkBoxValue"
+      name="myCheckbox"
+      value="MAN"
+      ngDefaultControl
+      label="man"
+      [binary]="false"
+    ></hp-checkbox>
+    <hp-checkbox
+      [(ngModel)]="checkBoxValue"
+      name="myCheckbox"
+      value="WOMAN"
+      ngDefaultControl
+      label="woman"
+      [binary]="false"
+    ></hp-checkbox>
+    <hp-checkbox
+      [(ngModel)]="checkBoxValue"
+      value="BOY"
+      name="myCheckbox"
+      ngDefaultControl
+      [binary]="false"
+      label="boy"
+    ></hp-checkbox>
+    <hp-checkbox
+      [(ngModel)]="checkBoxValue"
+      name="myCheckbox"
+      value="GIRL"
+      ngDefaultControl
+      [binary]="false"
+      label="GIRL"
+    ></hp-checkbox>
+    <p *ngFor="let item of checkBoxValue"><strong>Value :</strong>{{ item }}</p>
+  </section>
+
+  <p-divider type="dashed"></p-divider>
+
+  <section>
+    <h3>Input Number Example</h3>
+    <hp-inputnumber
+      [(ngModel)]="inputNumberValue"
+      name="mynumber"
+      [showButtons]="true"
+      ngDefaultControl
+    ></hp-inputnumber>
+    <p><strong>outside ng model value </strong>{{ inputNumberValue }}</p>
+  </section>
+
+  <p-divider type="dashed"></p-divider>
+
+  <section>
+    <h3>Button Example</h3>
+    <hp-button label="Submit" type="success" (onClick)="onSave()"></hp-button>
+  </section>
+
+  <p-divider type="dashed"></p-divider>
+
+  <section>
+    <h3>TextBox Example</h3>
+    <hp-textbox
+      type="text"
+      pInputText
+      [(ngModel)]="value"
+      placeholder="Name"
+      ngDefaultControl
+    ></hp-textbox>
+    <br />
+    <br />
+    <p><strong>Your Name : </strong> {{ value }}</p>
+  </section>
+</div>

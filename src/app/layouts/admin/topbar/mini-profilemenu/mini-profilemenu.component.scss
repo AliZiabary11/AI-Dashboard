@@ -1,0 +1,11 @@
+
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  */
+@media (min-width: 320px) and (max-width: 767px) {
+    .p-menu-overlay {
+        top: 100% !important;
+        left: 0;
+    }
+  }
+  

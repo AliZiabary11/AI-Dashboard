@@ -1,0 +1,106 @@
+<p-overlayPanel
+  #changePassIner
+  styleClass="shadow-4 p-1"
+  [showTransitionOptions]="'200ms'"
+  [hideTransitionOptions]="'200ms'"
+  [dismissable]="true"
+  [showCloseIcon]="true"
+>
+<div>
+  <form [formGroup]="miniChangePassForm">
+    <div class="row" dir="ltr">
+      <div class="my-2">
+        <label for="oldPass" class="mb-2"
+          >Current Password: <strong class="text-danger">*</strong></label
+        >
+        <hp-textbox
+          ngDefaultControl
+          type="password"
+          [className]="'w-100'"
+          [id]="'oldPass'"
+          formControlName="oldPass"
+        ></hp-textbox>
+        <!-- Validate errors -->
+        <div
+          *ngIf="oldPass?.invalid && (oldPass?.dirty || oldPass?.touched)"
+          class="text-danger"
+        >
+          <p *ngIf="oldPass?.errors?.['required']">
+            Current Password Can't be empty.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row"  dir="ltr">
+      <div class="my-2">
+        <label for="newPass" class="mb-2"
+          >New Password: <strong class="text-danger">*</strong></label
+        >
+        <hp-textbox
+          ngDefaultControl
+          type="password"
+          [className]="'w-100'"
+          [id]="'newPass'"
+          formControlName="newPass"
+        ></hp-textbox>
+        <!-- Validate errors -->
+        <div
+          *ngIf="newPass?.invalid && (newPass?.dirty || newPass?.touched)"
+          class="text-danger"
+        >
+          <p *ngIf="newPass?.errors?.['required']">
+            New Password Can't be empty.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row"  dir="ltr">
+      <div class="my-2">
+        <label for="newPassConfirm" class="mb-2"
+          >Repeat Password: <strong class="text-danger">*</strong></label
+        >
+        <hp-textbox
+          ngDefaultControl
+          type="password"
+          [className]="'w-100'"
+          [id]="'newPassConfirm'"
+          formControlName="newPassConfirm"
+        ></hp-textbox>
+        <!-- Validate errors -->
+        <div
+          *ngIf="
+            newPassConfirm?.invalid &&
+            (newPassConfirm?.dirty || newPassConfirm?.touched)
+          "
+          class="text-danger"
+        >
+          <p *ngIf="newPassConfirm?.errors?.['required']">
+            Repeat Passwrod Can't be Empty.
+          </p>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="text-center">
+    <div class="row"  dir="ltr">
+      <div class="col">
+        <hp-button
+          className="text-center"
+          [isLoading]="isLoading"
+          [label]="'Save'"
+          (onClick)="onSaveClick()"
+        ></hp-button>
+      </div>
+      <div class="col">
+        <hp-button
+          [label]="'Cancel'"
+          type="secondary"
+          (onClick)="onCloseClick()"
+        ></hp-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</p-overlayPanel>
